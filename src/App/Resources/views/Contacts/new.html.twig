@@ -1,0 +1,51 @@
+{% extends 'App::layout.html.twig' %}
+
+{% block subtitle 'contacts_new.title'|trans %}
+
+{% block content %}
+<div class="row">
+    <div class="span12">
+        <div class="page-header">
+            <h1 class="bg_contact">{{ 'contacts_new.title'|trans }}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span6 middleBlock">
+        <div class="widget block-edit-contact">
+            <div class="widget-header">
+                <i class="icon-user"></i>
+                <h3>{{ 'contacts_new.subtitle'|trans }}</h3>
+            </div>
+            <div class="widget-content">
+                <form class="form-horizontal" action="{{ path('app_contacts_create') }}" {{ form_enctype(form) }} method="POST" >
+                    {{ form_errors(form) }}
+                    <div class="fields">
+                        <div class="field">
+                            <div class="control-group {% if form.firstName.vars.errors|length %}error{% endif %}">
+                                {{ form_errors(form.firstName) }}
+                                {{ form_label(form.firstName) }}
+                                {{ form_widget(form.firstName) }}
+                            </div>
+                            <div class="control-group {% if form.lastName.vars.errors|length %}error{% endif %}">
+                                {{ form_errors(form.lastName) }}
+                                {{ form_label(form.lastName) }}
+                                {{ form_widget(form.lastName) }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">{{ 'contacts_new.button.save'|trans }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

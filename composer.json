@@ -1,0 +1,71 @@
+{
+    "name": "knplabs/rad-edition",
+    "description": "The \"KnpLabs Symfony2 Rad Edition\"",
+    "keywords": ["Symfony2", "Symfony2 Rad Edition", "Symfony2 Distribution"],
+    "license":     "MIT",
+    "type": "project",
+    "homepage": "http://rad.knplabs.com",
+    "authors": [
+        {
+            "name":     "Knplabs",
+            "homepage": "http://knplabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.2.*",
+        "symfony/swiftmailer-bundle": "2.2.*",
+        "symfony/monolog-bundle": "2.2.*",
+        "doctrine/orm": "~2.3",
+        "doctrine/doctrine-bundle": "1.2.*@alpha",
+        "sensio/distribution-bundle": "2.2.*",
+        "knplabs/rad-bundle": "dev-develop",
+
+        "twig/extensions": "1.0.*@dev",
+
+        "symfony/assetic-bundle": "2.1.*",
+        "kriswallsmith/assetic": "1.1.*@dev",
+
+        "doctrine/doctrine-fixtures-bundle": "2.1.*@dev",
+        "doctrine/data-fixtures": "1.0.*@dev",
+
+        "mopa/bootstrap-bundle": "2.1.*@dev",
+        "mopa/composer-bridge": "*@dev"
+    },
+    "require-dev": {
+        "behat/behat": "2.4.*",
+        "behat/symfony2-extension": "*",
+        "behat/mink-extension": "*",
+        "behat/mink-browserkit-driver": "*",
+        "phpspec/phpspec": "dev-master",
+        "phpspec/php-diff": "*@dev",
+        "sensiolabs/behat-page-object-extension": "*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "": "src/", "Context": "features/" }
+    },
+     "scripts": {
+        "post-install-cmd": [
+            "Knp\\RadBundle\\Composer\\ScriptHandler::installParametersFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Knp\\RadBundle\\Composer\\ScriptHandler::installParametersFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "symlink"
+    }
+}
